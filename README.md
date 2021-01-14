@@ -1,13 +1,13 @@
-# Project Name
+# photo_gallery
 
-> Project description
+> Photo Gallery Module for HomeHub
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/The-Casuals/checkout-service
+  - https://github.com/The-Casuals/reviews
+  - https://github.com/The-Casuals/photo_carousel
+
 
 ## Table of Contents
 
@@ -36,4 +36,3 @@ From within the root directory:
 npm install -g webpack
 npm install
 ```
-
