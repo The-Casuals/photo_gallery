@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React from 'react';
 
-const Item = (props) => {
-  const { photoUrl, photoDescription, photoName } = props.picture;
+const Item = ({ picture }) => {
+  const { photoUrl, photoDescription, photoName } = picture;
   return (
-    <div>
+    <div className="Item">
       <li>
         <img
           className="Picture"

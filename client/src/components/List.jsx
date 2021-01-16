@@ -1,10 +1,10 @@
 import React from 'react';
-import Item from './Item.jsx';
+import Item from './Item';
 
-const List = (props) => {
-  const { gallery } = props.gallerixa;
+const List = ({ galleria }) => {
+  const { gallery } = galleria;
   return (
-    <div>
+    <div className="List">
       <ul>
         {gallery.map((picture) => <Item picture={picture} />)}
       </ul>

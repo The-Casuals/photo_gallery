@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import List from './List.jsx';
+
+import List from './List';
+import Header from './Header';
 
 class App extends React.Component {
   constructor(props) {
@@ -53,6 +55,7 @@ class App extends React.Component {
         },
       },
 
+      // eslint-disable-next-line react/no-unused-state
       isSuperHost: false,
     };
     this.getGalleryById = this.getGalleryById.bind(this);
@@ -69,9 +72,12 @@ class App extends React.Component {
   }
 
   render() {
-    const { galleria } = this.state;
+    // const { galleria } = this.state;
     return (
-      <List galleria={galleria} />
+      <div>
+        <Header galleria={this.state.galleria} />
+        <List galleria={this.state.galleria} />
+      </div>
     );
   }
 }
