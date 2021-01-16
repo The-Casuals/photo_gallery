@@ -4,13 +4,14 @@ mongoose.connect('mongodb://localhost/photogallery', { useNewUrlParser: true, us
 
 // const db = mongoose.connection;
 
+// // eslint-disable-next-line no-console
 // db.on('error', console.error.bind(console, 'connection error:'));
 // db.once('open', () => {
+//   // eslint-disable-next-line no-console
 //   console.log('Connected to MongoDB!');
 // });
 
 const gallerySchema = new mongoose.Schema({
-  _id: Number,
   title: String,
   reviews: Number,
   rating: Number,
@@ -22,7 +23,7 @@ const gallerySchema = new mongoose.Schema({
   },
   gallery: [
     {
-      _id: Number,
+      id: Number,
       photoName: String,
       photoUrl: String,
       photoDescription: String,
