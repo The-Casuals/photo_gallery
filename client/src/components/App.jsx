@@ -9,56 +9,13 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      galleria: {
-        _id: 2,
-        title: 'Natus reiciendis similique ratione aspernatur minus.',
-        reviews: 15,
-        rating: 4.6620732333299735,
-        isSuperhost: true,
-        __v: 0,
-        gallery: [
-          {
-            _id: 1,
-            photoName: 'Towels Infrastructure bus',
-            photoUrl: 'https://loremflickr.com/1080/720/real_estate',
-            photoDescription: 'Aut eius eos autem temporibus non iste eum facere. A autem quasi reprehenderit sit. Soluta sed ut eius sed blanditiis sit. Iusto corporis praesentium sed. Est quam vitae cumque atque sed. Eveniet repellendus rerum vitae ea eum assumenda ut.',
-          },
-          {
-            _id: 2,
-            photoName: 'systems quantifying',
-            photoUrl: 'https://loremflickr.com/1080/720/real_estate',
-            photoDescription: 'Eum pariatur vero laboriosam. Pariatur impedit maiores. Consectetur qui non adipisci est voluptates.',
-          },
-          {
-            _id: 3,
-            photoName: 'XSS Avon Officer',
-            photoUrl: 'https://loremflickr.com/1080/720/real_estate',
-            photoDescription: 'Placeat quae doloribus alias omnis suscipit qui. Vel sed et ut molestiae. Sed ut incidunt doloribus ut odio molestiae et laudantium. Rem eius qui pariatur a et id eos ullam. Quas quasi labore blanditiis est blanditiis dolorum odio.',
-          },
-          {
-            _id: 4,
-            photoName: 'Shoes FTP exploit',
-            photoUrl: 'https://loremflickr.com/1080/720/real_estate',
-            photoDescription: 'Reiciendis consequatur optio facilis non. Ab vel et quidem totam est iure commodi ut. Maiores aut est cum eius quo quis consequatur alias. Voluptatibus qui aut eveniet et eveniet.',
-          },
-          {
-            _id: 5,
-            photoName: '24/7 District',
-            photoUrl: 'https://loremflickr.com/1080/720/real_estate',
-            photoDescription: 'Quis maxime veniam et. Reiciendis iusto rerum quod quod dignissimos quidem praesentium quas. Omnis tempora ut laborum dolor.',
-          },
-        ],
-        location: {
-          city: 'New Cyril',
-          state: 'Montana',
-          country: 'Nauru',
-        },
-      },
-
-      // eslint-disable-next-line react/no-unused-state
-      isSuperHost: false,
+      galleria: [],
     };
     this.getGalleryById = this.getGalleryById.bind(this);
+  }
+
+  componentDidMount() {
+    this.getGalleryById(2);
   }
 
   getGalleryById(id) {
@@ -75,8 +32,8 @@ class App extends React.Component {
     // const { galleria } = this.state;
     return (
       <div>
-        <Header galleria={this.state.galleria} />
-        <List galleria={this.state.galleria} />
+        {this.state.galleria.map(sample => <Header galleria={sample} />)}
+        {this.state.galleria.map(sample => <List galleria={sample} />)}
       </div>
     );
   }

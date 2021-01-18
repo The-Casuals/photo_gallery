@@ -3,7 +3,6 @@
 import React from 'react';
 
 const Header = ({ galleria }) => {
-  console.log(galleria);
   const {
     title, reviews, rating, isSuperhost, location,
   } = galleria;
@@ -17,7 +16,8 @@ const Header = ({ galleria }) => {
         <div className="rating">
           {parseFloat(rating).toFixed(2)}
           {`(${reviews})`}
-        </div> ·
+        </div>
+        ·
         <div className="superhost">
           {/* eslint-disable-next-line react/jsx-fragments */}
           {isSuperhost ? 'Superhost' : <></>}
