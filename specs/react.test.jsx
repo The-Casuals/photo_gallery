@@ -9,12 +9,12 @@ describe('App testing', () => {
     wrapper = shallow(<App />);
   });
 
-  it('Header rendered lets go dood!', () => {
-    expect(wrapper.find('Header')).toExist();
+  it('Gallery rendered lets go my main man!', () => {
+    expect(wrapper.find('Gallery')).toExist();
   });
-  it('List rendered lets go my main man!', () => {
-    expect(wrapper.find('List')).toExist();
-  });
+  // it('Header rendered LETS GOOOO', () => {
+  //   expect(wrapper.find('Header')).toExist();
+  // });
 });
 
 // describe('<Header />', () => {

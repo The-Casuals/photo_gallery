@@ -33,7 +33,7 @@ const Gallery = (props) => {
   const SmallImage = styled.section`
     box-sizing: border-box;
     cursor: pointer;
-    height: 48.5%;
+    height: 49%;
     line-height: 20px;
     object-fit: cover;
     vertical-align: bottom;

@@ -44,6 +44,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "styled-components": "^5.2.1",
+    "supertest": "^6.1.1",
     "underscore": "^1.8.3"
   }
 }

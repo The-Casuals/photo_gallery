@@ -29,10 +29,10 @@ class App extends React.Component {
   }
 
   render() {
-    // const { galleria } = this.state;
+    const { galleria } = this.state;
     return (
       <div>
-        {this.state.galleria.map(sample => <Header galleria={sample} />)}
+        {galleria.map((sample) => <Header galleria={sample} />)}
         <Gallery />
         {/* {this.state.galleria.map(sample => <List galleria={sample} />)} */}
       </div>
