@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-
 import List from './List';
 import Header from './Header';
+import Gallery from './Gallery';
 
 class App extends React.Component {
   constructor(props) {
@@ -33,7 +33,8 @@ class App extends React.Component {
     return (
       <div>
         {this.state.galleria.map(sample => <Header galleria={sample} />)}
-        {this.state.galleria.map(sample => <List galleria={sample} />)}
+        <Gallery />
+        {/* {this.state.galleria.map(sample => <List galleria={sample} />)} */}
       </div>
     );
   }
