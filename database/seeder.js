@@ -1,7 +1,7 @@
 const faker = require('faker');
 const { Gallery, connection } = require('./index.js');
 
-let seed = [];
+const seed = [];
 
 const getGalleries = () => {
   const galleries = [];
