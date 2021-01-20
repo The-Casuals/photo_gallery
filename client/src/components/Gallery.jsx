@@ -9,14 +9,15 @@ const Gallery = (props) => {
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 5%;
+    margin-right: 5%;
     line-height: 20px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
     background-color: red;
     height: 45%;
     width: 100%;
+    max-width: 1128px;
     position: absolute;
   `;
   const BigImage = styled.div`
