@@ -33,7 +33,7 @@ class App extends React.Component {
     return (
       <div>
         {galleria.map((sample) => <Header galleria={sample} />)}
-        <Gallery />
+        {galleria.map((sample) => <Gallery galleria={sample} />)}
         {/* {this.state.galleria.map(sample => <List galleria={sample} />)} */}
       </div>
     );
