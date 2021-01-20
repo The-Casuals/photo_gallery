@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/photogallery', { useNewUrlParser: true, useUnifiedTopology: true });
 
-// const db = mongoose.connection;
+const { connection } = mongoose;
 
 // db.on('error', console.error.bind(console, 'connection error:'));
 // db.once('open', () => {
@@ -26,6 +26,8 @@ const gallerySchema = new mongoose.Schema({
       photoName: String,
       photoUrl: String,
       photoDescription: String,
+      isVerified: Boolean,
+      hasDescription: Boolean,
     },
   ],
 });
@@ -34,4 +36,5 @@ const Gallery = mongoose.model('Gallery', gallerySchema);
 
 module.exports = {
   Gallery,
+  connection,
 };

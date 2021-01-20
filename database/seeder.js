@@ -1,17 +1,20 @@
 const faker = require('faker');
-const { Gallery } = require('./index.js');
+const { Gallery, connection } = require('./index.js');
 
-// const randomImageUrl = 'https://loremflickr.com/1080/720/real_estate';
+let seed = [];
 
 const getGalleries = () => {
   const galleries = [];
-  const randomLength = Math.floor(Math.random() * (50 - 15) + 15);
-  for (let i = 0; i < randomLength; i += 1) {
+  const randomAlbum = Math.floor(Math.random() * (2 - 0) + 0);
+  const lengths = [52, 16, 42];
+  for (let i = 0; i < lengths[randomAlbum]; i += 1) {
     galleries.push({
       _id: i + 1,
       photoName: faker.random.words(),
-      photoUrl: 'https://loremflickr.com/1080/720/real_estate',
+      photoUrl: `https://fec-photogallery-storage.s3-us-west-1.amazonaws.com/${randomAlbum + 1}/${i}.jpeg`,
       photoDescription: faker.lorem.paragraph(),
+      isVerified: faker.random.boolean(),
+      hasDescription: faker.random.boolean(),
     });
   }
   return galleries;
@@ -32,8 +35,15 @@ const getSampleData = () => {
       },
       gallery: getGalleries(),
     };
-    Gallery.create(gallerymodel);
+    seed.push(gallerymodel);
   }
 };
-
 getSampleData();
+
+Gallery.insertMany(seed, (err) => {
+  if (err) {
+    throw new Error(err);
+  } else {
+    connection.close();
+  }
+});
