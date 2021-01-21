@@ -1,6 +1,7 @@
 import React from 'react';
-import { shallow/* , mount, render */ } from 'enzyme';
+import { shallow/* mount, render */ } from 'enzyme';
 // import Header from '../client/src/components/Header';
+// import Gallery from '../client/src/components/Gallery';
 import App from '../client/src/components/App';
 
 describe('App testing', () => {
@@ -12,28 +13,28 @@ describe('App testing', () => {
   it('Gallery rendered lets go my main man!', () => {
     expect(wrapper.find('Gallery')).toExist();
   });
-  // it('Header rendered LETS GOOOO', () => {
-  //   expect(wrapper.find('Header')).toExist();
-  // });
+  it('Header rendered LETS GOOOO', () => {
+    expect(wrapper.find('Header')).toExist();
+  });
 });
 
 // describe('<Header />', () => {
 //   it('should render without throwing an error', () => {
-//     expect(shallow(<Header />).contains(<div className="title">Natus reiciendis similique ratione aspernatur minus.</div>)).toBe(true);
-//     expect(shallow(<Header />).contains(<div className="rating">4.66</div>)).toBe(true);
-//     expect(shallow(<Header />).contains(<div className="superhost">Superhost</div>)).toBe(true);
-//     expect(shallow(<Header />).contains(<div className="location">New Cyril, Montana, Nauru</div>)).toBe(true);
+//     expect(shallow(<Header />).contains(<div>Ut enim ab culpa saepe debitis.</div>)).toBe(true);
+//     expect(shallow(<Header />).contains(<div>4.40</div>)).toBe(true);
+//     expect(shallow(<Header />).contains(<div>Superhost</div>)).toBe(true);
+//     expect(shallow(<Header />).contains(<div>Russelton, Alaska, Uzbekistan</div>)).toBe(true);
 //   });
 
-  // it('should be selectable by class "header"', () => {
-  //   expect(shallow(<Header />).is('.header')).toBe(true);
-  // });
+//   it('should be selectable by class "header"', () => {
+//     expect(shallow(<Header />).is('.header')).toBe(true);
+//   });
 
-  // it('should mount in a full DOM', () => {
-  //   expect(mount(<Header />).find('header').length).toBe(1);
-  // });
+//   it('should mount in a full DOM', () => {
+//     expect(mount(<Header />).find('Header').length).toBe(1);
+//   });
 
-  // it('should render to static HTML', () => {
-  //   expect(render(<Header />).text()).toEqual('Natus reiciendis similique ratione aspernatur minus. 4.66 · Superhost · New Cyril, Montana, Nauru Share Save');
-//   // });
+//   // it('should render to static HTML', () => {
+//   //   expect(render(<Header />).text()).toEqual('Natus reiciendis similique ratione aspernatur minus. 4.66 · Superhost · New Cyril, Montana, Nauru Share Save');
+// //   // });
 // });
