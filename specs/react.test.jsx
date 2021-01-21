@@ -35,6 +35,5 @@ describe('App testing', () => {
 //   });
 
 //   // it('should render to static HTML', () => {
-//   //   expect(render(<Header />).text()).toEqual('Natus reiciendis similique ratione aspernatur minus. 4.66 · Superhost · New Cyril, Montana, Nauru Share Save');
-// //   // });
+// });
 // });
