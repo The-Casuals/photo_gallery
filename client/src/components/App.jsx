@@ -32,6 +32,10 @@ class App extends React.Component {
     const { galleria } = this.state;
     return (
       <div>
+        <head>
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet" />
+        </head>
         {galleria.map((sample) => <Header galleria={sample} />)}
         {galleria.map((sample) => <Gallery galleria={sample} />)}
         {/* {this.state.galleria.map(sample => <List galleria={sample} />)} */}

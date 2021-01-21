@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Grid } from '@styled-icons/boxicons-solid';
 
 const Container = styled.div`
   padding-left: 40px;
@@ -35,12 +36,11 @@ const SmallContainer = styled.div`
 height: 100%;
 `;
 const ShowContainer = styled.div`
-  position: absolute;
-  z-index: 3;
-  bottom: 24px;
-  right: 24px;
+  position: fixed;
+  top: 55%;
+  right: 7%;
 `;
-const ShowAnchor = styled.a`
+const ShowAnchor = styled.button`
   cursor: pointer;
   display: inline-block;
   margin: 0;
@@ -64,8 +64,14 @@ const ShowTextContainer = styled.div`
 display: flex;
 align-items: center;
 `;
+const GridEmoji = styled(Grid)`
+  height: 12px;
+  width: 12px;
+  display: block;
+`;
 const ShowText = styled.div`
   margin-left: 8px;
+  box-sizing: border-box;
 `;
 const BigImage = styled.img`
   border-top-left-radius: 20px;
@@ -128,6 +134,16 @@ const Gallery = (props) => {
               <SmallBottomRight
                 src={gallery[4]['photoUrl']}
               />
+              <ShowContainer>
+                <ShowAnchor>
+                  <ShowTextContainer>
+                    <GridEmoji />
+                    <ShowText>
+                      Show all photos
+                    </ShowText>
+                  </ShowTextContainer>
+                </ShowAnchor>
+              </ShowContainer>
             </Row2>
           </SmallContainer>
         </RightColumn>
