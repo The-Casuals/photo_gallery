@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import List from './List';
+// import List from './List';
 import Header from './Header';
 import Gallery from './Gallery';
+import Modal from './Modal';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,8 +11,11 @@ class App extends React.Component {
 
     this.state = {
       galleria: [],
+      show: false,
     };
     this.getGalleryById = this.getGalleryById.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
   }
 
   componentDidMount() {
@@ -28,17 +32,31 @@ class App extends React.Component {
       });
   }
 
+  showModal() {
+    this.setState({ show: true });
+  }
+
+  hideModal() {
+    this.setState({ show: false });
+  }
+
   render() {
-    const { galleria } = this.state;
+    const { galleria, show } = this.state;
+    const renderModal = show
+      ? (galleria.map(
+        (sample) => <Modal galleria={sample} show={show} hideModal={this.hideModal} />,
+      ))
+      : (<></>);
     return (
       <div>
-        <head>
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet" />
-        </head>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet" />
         {galleria.map((sample) => <Header galleria={sample} />)}
-        {galleria.map((sample) => <Gallery galleria={sample} />)}
-        {/* {this.state.galleria.map(sample => <List galleria={sample} />)} */}
+        {galleria.map(
+          // eslint-disable-next-line max-len
+          (sample) => <Gallery galleria={sample} showModal={this.showModal} />,
+        )}
+        {renderModal}
       </div>
     );
   }

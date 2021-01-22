@@ -20,6 +20,7 @@ const Row2 = styled.div`
   height: 50%;
   padding-top: 8px;
   box-sizing: border-box;
+  position: relative;
 `;
 const LeftColumn = styled.div`
   flex-direction: column;
@@ -33,12 +34,12 @@ const RightColumn = styled.div`
   padding-left: 8px;
 `;
 const SmallContainer = styled.div`
-height: 100%;
+  height: 100%;
 `;
 const ShowContainer = styled.div`
-  position: fixed;
-  top: 55%;
-  right: 7%;
+  position: absolute;
+  top: 70%;
+  right: 15%;
 `;
 const ShowAnchor = styled.button`
   cursor: pointer;
@@ -98,7 +99,7 @@ const SmallBottomRight = styled.img`
   object-fit: cover;
 `;
 const Gallery = (props) => {
-  const { galleria } = props;
+  const { galleria, showModal } = props;
   const { gallery } = galleria;
 
   return (
@@ -135,7 +136,7 @@ const Gallery = (props) => {
                 src={gallery[4]['photoUrl']}
               />
               <ShowContainer>
-                <ShowAnchor>
+                <ShowAnchor onClick={showModal}>
                   <ShowTextContainer>
                     <GridEmoji />
                     <ShowText>
