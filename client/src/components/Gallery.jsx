@@ -3,12 +3,20 @@ import styled from 'styled-components';
 import { Grid } from '@styled-icons/boxicons-solid';
 
 const Container = styled.div`
+  display: flex;
   padding-left: 40px;
   padding-right: 40px;
+  justify-content: center;
+`;
+const Container1 = styled.div`
+  width: 100%
+  max-width: 1128px;
 `;
 const GalleryContainer = styled.div`
   display: flex;
   height: 400px;
+  justify-content: center;
+  max-width: 1128px;
 `;
 const BigContainer = styled.div`
   width: 50%;
@@ -62,8 +70,8 @@ const ShowAnchor = styled.button`
   color: rgb(34, 34, 34);
 `;
 const ShowTextContainer = styled.div`
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
 `;
 const GridEmoji = styled(Grid)`
   height: 12px;
@@ -99,56 +107,57 @@ const SmallBottomRight = styled.img`
   object-fit: cover;
 `;
 const Gallery = (props) => {
-  const { galleria, showModal } = props;
-  const { gallery } = galleria;
+  const { allImages, showModal } = props;
 
   return (
     <Container>
-      <GalleryContainer>
-        <BigContainer>
-          <BigImage
-            src={gallery[0]['photoUrl']}
-          />
-        </BigContainer>
-        <LeftColumn>
-          <SmallContainer>
-            <Row1>
-              <SmallImage
-                src={gallery[1]['photoUrl']}
-              />
-            </Row1>
-            <Row2>
-              <SmallImage
-                src={gallery[2]['photoUrl']}
-              />
-            </Row2>
-          </SmallContainer>
-        </LeftColumn>
-        <RightColumn>
-          <SmallContainer>
-            <Row1>
-              <SmallTopRight
-                src={gallery[3]['photoUrl']}
-              />
-            </Row1>
-            <Row2>
-              <SmallBottomRight
-                src={gallery[4]['photoUrl']}
-              />
-              <ShowContainer>
-                <ShowAnchor onClick={showModal}>
-                  <ShowTextContainer>
-                    <GridEmoji />
-                    <ShowText>
-                      Show all photos
-                    </ShowText>
-                  </ShowTextContainer>
-                </ShowAnchor>
-              </ShowContainer>
-            </Row2>
-          </SmallContainer>
-        </RightColumn>
-      </GalleryContainer>
+      <Container1>
+        <GalleryContainer>
+          <BigContainer>
+            <BigImage
+              src={allImages[0]['photoUrl']}
+            />
+          </BigContainer>
+          <LeftColumn>
+            <SmallContainer>
+              <Row1>
+                <SmallImage
+                  src={allImages[1]['photoUrl']}
+                />
+              </Row1>
+              <Row2>
+                <SmallImage
+                  src={allImages[2]['photoUrl']}
+                />
+              </Row2>
+            </SmallContainer>
+          </LeftColumn>
+          <RightColumn>
+            <SmallContainer>
+              <Row1>
+                <SmallTopRight
+                  src={allImages[3]['photoUrl']}
+                />
+              </Row1>
+              <Row2>
+                <SmallBottomRight
+                  src={allImages[4]['photoUrl']}
+                />
+                <ShowContainer>
+                  <ShowAnchor onClick={showModal}>
+                    <ShowTextContainer>
+                      <GridEmoji />
+                      <ShowText>
+                        Show all photos
+                      </ShowText>
+                    </ShowTextContainer>
+                  </ShowAnchor>
+                </ShowContainer>
+              </Row2>
+            </SmallContainer>
+          </RightColumn>
+        </GalleryContainer>
+      </Container1>
     </Container>
   );
 };

@@ -6,19 +6,29 @@ import {
   HeartOutlined, Heart, Star, Trophy, ShareAlternative,
 } from '@styled-icons/entypo';
 
-const HeadContain = styled.div`
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
   margin-left: 5%;
   margin-right: 5%;
   padding-top: 5%;
+  padding-right: 80px;
+  padding-left: 80px;
   padding-bottom: 2%;
+`;
+const HeadContain = styled.div`
+  width: 100%;
+  min-width: auto;
+  max-width: 1128px;
 `;
 const TitleRow = styled.div`
   display: flex;
-  justify-content: flex-start;
+  width: 100%;
+  max-width: 1128px;
   font-family: 'Nunito Sans', sans-serif;
 `;
 const DescriptionRow = styled.div`
-  margin-top: -3%;
+  margin-top: -2%;
   display: flex;
   justify-content: flex-start;
   align-items: baseline;
@@ -97,45 +107,51 @@ const Button = styled.button`
   font-family: 'Nunito Sans', sans-serif;
   font-size: 14px;
 `;
-const Header = ({ galleria }) => {
+const Header = (props) => {
+console.log('dis is props', props);
+  const { galleria } = props;
+  console.log(galleria);
   const {
     title, reviews, rating, isSuperhost, location,
   } = galleria;
+  console.log(location);
   const { city, state, country } = location;
   return (
-    <HeadContain>
-      <TitleRow>
-        <h1>{title}</h1>
-      </TitleRow>
-      <DescriptionRow>
-        <HeaderDescrip>
-          <Rating>
-            <StarEmoji />
-            {parseFloat(rating).toFixed(2)}
-          </Rating>
-          <Reviews>
-            {`(${reviews})`}
-          </Reviews>
-          <Separator>
-            ·
-          </Separator>
-          {isSuperhost ? <SuperEmoji /> : <></> }
-          {isSuperhost ? <Superhost>Superhost</Superhost> : <></>}
-          {isSuperhost ? <Separator>·</Separator> : <></>}
-          <Location href={`https://www.google.com/search?q=${city}+${state}+${country}`}>{`${city}, ${state}, ${country}`}</Location>
-        </HeaderDescrip>
-        <HeaderEnd>
-          <Button>
-            <SaveEmoji />
-            Save
-          </Button>
-          <Button>
-            <ShareEmoji />
-            Share
-          </Button>
-        </HeaderEnd>
-      </DescriptionRow>
-    </HeadContain>
+    <Container>
+      <HeadContain>
+        <TitleRow>
+          <h1>{title}</h1>
+        </TitleRow>
+        <DescriptionRow>
+          <HeaderDescrip>
+            <Rating>
+              <StarEmoji />
+              {parseFloat(rating).toFixed(2)}
+            </Rating>
+            <Reviews>
+              {`(${reviews})`}
+            </Reviews>
+            <Separator>
+              ·
+            </Separator>
+            {isSuperhost ? <SuperEmoji /> : <></> }
+            {isSuperhost ? <Superhost>Superhost</Superhost> : <></>}
+            {isSuperhost ? <Separator>·</Separator> : <></>}
+            <Location href={`https://www.google.com/search?q=${city}+${state}+${country}`}>{`${city}, ${state}, ${country}`}</Location>
+          </HeaderDescrip>
+          <HeaderEnd>
+            <Button>
+              <SaveEmoji />
+              Save
+            </Button>
+            <Button>
+              <ShareEmoji />
+              Share
+            </Button>
+          </HeaderEnd>
+        </DescriptionRow>
+      </HeadContain>
+    </Container>
   );
 };
 
