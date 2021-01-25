@@ -73,9 +73,11 @@ const VerifiedContainer = styled.div`
   -webkit-box-align: center !important;
   padding-bottom: 8px !important;
   display: flex !important;
+  justify-content: center;
 `;
 const VerifiedEmoji = styled(Verified)`
   font-weight: normal !important;
+  width: 15px;
 `;
 const VerifiedText = styled.div`
   font-size: 12px !important;
@@ -86,11 +88,10 @@ const DescriptionText = styled.div`
   box-sizing: border-box;
 `;
 const ModalPicture = (props) => {
-  const { featurePicture } = props;
-  console.log(featurePicture);
+  const { modalImage } = props;
   const {
     hasDescription, isVerified, photoDescription, photoName, photoUrl,
-  } = featurePicture;
+  } = modalImage;
   const renderVerified = isVerified
     ? (
       <VerifiedContainer>

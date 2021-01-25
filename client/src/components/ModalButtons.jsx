@@ -22,6 +22,7 @@ const ButtonContainer = styled.div`
 
 const Button = styled.button`
   appearance: none !important;
+  z-index: 1;
   display: inline-block !important;
   border-radius: 50% !important;
   border: none !important;
@@ -31,7 +32,7 @@ const Button = styled.button`
   color: rgb(34, 34, 34) !important;
   cursor: pointer !important;
   touch-action: manipulation !important;
-  position: relative !important;
+  position: absolute !important;
   background: transparent !important;
   transition: -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s !important;
   `;
@@ -44,6 +45,7 @@ const ButtonBackground = styled.div`
   transform: translate(-50%, -50%) !important;
   width: 48px !important;
   height: 48px !important;
+  cursor: pointer !important;
   border-radius: 50% !important;
   background: rgb(255, 255, 255) !important;
   border: 1px solid rgb(176, 176, 176) !important;
@@ -54,6 +56,7 @@ const ButtonBackgroundRight = styled.div`
   position: absolute !important;
   top: 50% !important;
   right: 2% !important;
+  cursor: pointer !important;
   transform: translate(-50%, -50%) !important;
   width: 48px !important;
   height: 48px !important;
@@ -76,35 +79,35 @@ const ButtonEmojiContainer = styled.span`
 `;
 const LeftButtonEmoji = styled(ChevronLeft)`
   display: block;
-  height: 12px;
+  height: 50px;
   width: 12px;
   stroke: currentcolor;
-  stroke-width: 5.33333;
   overflow: visible;
 `;
 const RightButtonEmoji = styled(ChevronRight)`
   display: block;
-  height: 12px;
+  height: 50px;
   width: 12px;
   stroke: currentcolor;
-  stroke-width: 5.33333;
   overflow: visible;
 `;
 const ModalButtons = (props) => {
-  // const { } = props;
+  const { onLeftClick, onRightClick } = props;
   return (
     <ButtonContainer>
-      <ButtonBackground>
+      <ButtonBackground onClick={() => onLeftClick()}>
+        <LeftButtonEmoji />
         <Button>
           <ButtonEmojiContainer>
-            <LeftButtonEmoji />
+            Left
           </ButtonEmojiContainer>
         </Button>
       </ButtonBackground>
-      <ButtonBackgroundRight>
+      <ButtonBackgroundRight onClick={() => onRightClick()}>
+        <RightButtonEmoji />
         <Button>
           <ButtonEmojiContainer>
-            <RightButtonEmoji />
+            Right
           </ButtonEmojiContainer>
         </Button>
       </ButtonBackgroundRight>

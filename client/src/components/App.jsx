@@ -12,53 +12,48 @@ class App extends React.Component {
     this.state = {
       galleria: {},
       show: false,
-      picture: null,
+      picture: { _id: 1 },
+      pictureIndex: 0,
       allImages: [],
+      modalImage: null,
       loading: true,
     };
+  }
+
+  async componentDidMount() {
+    const randomId = Math.floor(Math.random() * 100);
+    await this.getGalleryById(randomId);
+
     this.getGalleryById = this.getGalleryById.bind(this);
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
-    // this.handleModalClick = this.handleModalClick(this);
-    // this.handleLeftButtonClick = this.handleLeftButtonClick(this);
-    // this.handleRightButtonClick = this.handleRightButtonClick(this);
+    this.handleModalClick = this.handleModalClick.bind(this);
+    this.handleLeftButtonClick = this.handleLeftButtonClick.bind(this);
+    this.handleRightButtonClick = this.handleRightButtonClick.bind(this);
   }
 
-  componentDidMount() {
-    const randomId = Math.floor(Math.random() * 100);
-    this.getGalleryById(randomId);
+  handleModalClick(photoId) {
+    const { allImages } = this.state;
+    this.setState({ pictureIndex: photoId, modalImage: allImages[photoId] });
+    this.showModal();
   }
 
-  // handleModalClick(photoId) {
-  //   const { galleria } = this.state;
-  //   const { gallery } = galleria;
-  //   console.log(galleria);
-  //   gallery.forEach((key) => {
-  //     if (key._id === photoId) {
-  //       this.setState({ picture: key._id });
-  //     }
-  //   });
-  // }
+  handleLeftButtonClick() {
+    console.log('left fired');
+    const { pictureIndex, allImages } = this.state;
+    return pictureIndex === 0
+      ? this.setState({ pictureIndex: allImages.length - 1, modalImage: allImages[allImages.length -1] })
+      : this.setState({ pictureIndex: pictureIndex - 1, modalImage: allImages[pictureIndex - 1] });
+  }
 
-  // handleLeftButtonClick(photoId) {
-  //   const { galleria } = this.state;
-  //   const { gallery } = galleria;
-  //   gallery.forEach((key) => {
-  //     if (key._id === photoId) {
-  //       this.setState({ picture: key._id - 1 });
-  //     }
-  //   });
-  // }
-
-  // handleRightButtonClick(photoId) {
-  //   const { galleria } = this.state;
-  //   const { gallery } = galleria;
-  //   gallery.forEach((key) => {
-  //     if (key._id === photoId) {
-  //       this.setState({ picture: key._id + 1 });
-  //     }
-  //   });
-  // }
+  handleRightButtonClick() {
+    console.log('right fired');
+    const { pictureIndex, allImages } = this.state;
+    return pictureIndex === allImages.length - 1
+      ? this.setState({ pictureIndex: 0, modalImage: allImages[0] })
+      : this.setState({ pictureIndex: pictureIndex + 1, modalImage: allImages[pictureIndex + 1] });
+    // this.setState({ pictureIndex: pictureIndex + 1, modalImage: allImages[pictureIndex + 1] });
+  }
 
   getGalleryById(id) {
     axios.get(`http://localhost:3017/api/galleries/${id}`)
@@ -66,13 +61,8 @@ class App extends React.Component {
         this.setState({ galleria: res.data[0] }, () => {
           const { galleria, loading } = this.state;
           const { gallery } = galleria;
-          this.setState({ allImages: gallery, loading: !loading });
+          this.setState({ allImages: gallery, loading: !loading, modalImage: gallery[0] });
         });
-        console.log(this.state);
-        // console.log('resdata', res.data);
-        // const galleria = res.data;
-        // const allImages = galleria.gallery;
-        // this.setState({ galleria, allImages });
       })
       .catch((err) => {
         throw (err);
@@ -84,24 +74,25 @@ class App extends React.Component {
   }
 
   hideModal() {
-    this.setState({ show: false });
+    console.log('Hello remy');
+    const { allImages } = this.state;
+    this.setState({ show: false, modalImage: allImages[0], pictureIndex: 0 });
   }
 
   render() {
     const {
-      galleria, show, picture, allImages, loading,
+      galleria, show, picture, allImages, loading, pictureIndex, modalImage,
     } = this.state;
-    // console.log(allImages);
-    // console.log(galleria.gallery);
     const renderModal = show
-      ? <Modal featurePicture={picture} show={show} hideModal={this.hideModal} />
+      // eslint-disable-next-line max-len
+      ? <Modal featurePicture={picture} show={show} hideModal={this.hideModal} onLeftClick={this.handleLeftButtonClick} onRightClick={this.handleRightButtonClick} allImages={allImages} pictureIndex={pictureIndex} modalImage={modalImage} />
       : (<></>);
-    const plswork = loading
+    const loadingRender = loading
       ? (<div>Loading....</div>)
       : (
         <div>
-          <Header galleria={galleria} />
-          <Gallery allImages={allImages} showModal={this.showModal} />
+          <Header galleria={galleria} featuredPicture={picture} />
+          <Gallery allImages={allImages} showModal={this.showModal} onClick={this.handleModalClick} />
         </div>
       );
     return (
@@ -110,7 +101,7 @@ class App extends React.Component {
         <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet" />
         {/* <Header galleria={galleria} />
         <Gallery allImages={allImages} showModal={this.showModal} /> */}
-        {plswork}
+        {loadingRender}
         {renderModal}
       </div>
     );

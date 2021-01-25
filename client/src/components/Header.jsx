@@ -108,13 +108,10 @@ const Button = styled.button`
   font-size: 14px;
 `;
 const Header = (props) => {
-console.log('dis is props', props);
   const { galleria } = props;
-  console.log(galleria);
   const {
     title, reviews, rating, isSuperhost, location,
   } = galleria;
-  console.log(location);
   const { city, state, country } = location;
   return (
     <Container>

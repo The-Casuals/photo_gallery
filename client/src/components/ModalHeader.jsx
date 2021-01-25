@@ -35,9 +35,6 @@ const HeaderLine = styled.div`
 const HideContainer = styled.div`
   box-sizing: border-box;
 `;
-const HideContainer1 = styled.div`
-  min-width: 50px;
-`;
 const HideButton = styled.button`
   cursor: pointer !important;
   display: flex;
@@ -56,6 +53,11 @@ const HideButton = styled.button`
   background: rgba(34, 34, 34, 0.1) !important;
   color: rgb(34, 34, 34) !important;
   border: none !important;
+`;
+const HideWrapper = styled.div`
+  &:hover ${HideButton} {
+    background-color: rgb(24, 24, 24);
+  }
 `;
 const HideTextContainer = styled.span`
   font-size: 14px !important;
@@ -128,26 +130,31 @@ const SaveEmoji = styled(HeartOutlined)`
   transition: -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s !important;
 `;
 const ModalHeader = (props) => {
-  const { hideModal } = props;
+  const {
+    hideModal, allImages, modalImage,
+  } = props;
+  const { _id } = modalImage;
   return (
     <HeaderContainer>
       <Header>
         <HideContainer>
-          <HideButton onClick={hideModal}>
-            <HideEmojiContainer>
-              <HideEmoji>
-                X
-              </HideEmoji>
-            </HideEmojiContainer>
-            <HideTextContainer>
-              <HideText>
-                Close
-              </HideText>
-            </HideTextContainer>
-          </HideButton>
+          <HideWrapper>
+            <HideButton onClick={hideModal}>
+              <HideEmojiContainer>
+                <HideEmoji>
+                  X
+                </HideEmoji>
+              </HideEmojiContainer>
+              <HideTextContainer>
+                <HideText>
+                  Close
+                </HideText>
+              </HideTextContainer>
+            </HideButton>
+          </HideWrapper>
         </HideContainer>
         <HeaderLine>
-          1/51
+          {`${_id}/${allImages.length}`}
         </HeaderLine>
         <HeaderEnd>
           <ShareSaveContainer>

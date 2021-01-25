@@ -29,16 +29,16 @@ const SubContainer2 = styled.div`
 `;
 const Modal = (props) => {
   const {
-    featurePicture, hideModal, onModalClick, onLeftClick, onRightClick
+    featurePicture, hideModal, onModalClick, onLeftClick, onRightClick, allImages, pictureIndex, modalImage,
   } = props;
   return (
     <MainContainer>
       <SubContainer>
         <SubContainer1>
           <SubContainer2>
-            <ModalHeader hideModal={hideModal} />
-            <ModalButtons onLeftClic={onLeftClick} onRightClick={onRightClick} />
-            <ModalPicture featurePicture={featurePicture} onModalClick={onModalClick} />
+            <ModalHeader hideModal={hideModal} modalImage={modalImage} allImages={allImages} />
+            <ModalButtons onLeftClick={onLeftClick} onRightClick={onRightClick} />
+            <ModalPicture featurePicture={allImages[0]} modalImage={modalImage} onModalClick={onModalClick} index={pictureIndex}/>
           </SubContainer2>
         </SubContainer1>
       </SubContainer>

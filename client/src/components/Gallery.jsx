@@ -45,6 +45,7 @@ const SmallContainer = styled.div`
   height: 100%;
 `;
 const ShowContainer = styled.div`
+  display: flex;
   position: absolute;
   top: 70%;
   right: 15%;
@@ -88,26 +89,30 @@ const BigImage = styled.img`
   object-fit: cover;
   height: 100%;
   width: 100%;
+  cursor: pointer;
 `;
 const SmallImage = styled.img`
   height: 100%;
   width: 100%;
   object-fit: cover;
+  cursor: pointer;
 `;
 const SmallTopRight = styled.img`
   border-top-right-radius: 20px;
   height: 100%;
   width: 100%;
   object-fit: cover;
+  cursor: pointer;
 `;
 const SmallBottomRight = styled.img`
   border-bottom-right-radius: 20px;
   height: 100%;
   width: 100%;
   object-fit: cover;
+  cursor: pointer;
 `;
 const Gallery = (props) => {
-  const { allImages, showModal } = props;
+  const { allImages, showModal, onClick } = props;
 
   return (
     <Container>
@@ -115,19 +120,22 @@ const Gallery = (props) => {
         <GalleryContainer>
           <BigContainer>
             <BigImage
-              src={allImages[0]['photoUrl']}
+              src={allImages[0].photoUrl}
+              onClick={() => onClick(0)}
             />
           </BigContainer>
           <LeftColumn>
             <SmallContainer>
               <Row1>
                 <SmallImage
-                  src={allImages[1]['photoUrl']}
+                  src={allImages[1].photoUrl}
+                  onClick={() => onClick(1)}
                 />
               </Row1>
               <Row2>
                 <SmallImage
-                  src={allImages[2]['photoUrl']}
+                  src={allImages[2].photoUrl}
+                  onClick={() => onClick(2)}
                 />
               </Row2>
             </SmallContainer>
@@ -136,12 +144,14 @@ const Gallery = (props) => {
             <SmallContainer>
               <Row1>
                 <SmallTopRight
-                  src={allImages[3]['photoUrl']}
+                  src={allImages[3].photoUrl}
+                  onClick={() => onClick(3)}
                 />
               </Row1>
               <Row2>
                 <SmallBottomRight
-                  src={allImages[4]['photoUrl']}
+                  src={allImages[4].photoUrl}
+                  onClick={() => onClick(4)}
                 />
                 <ShowContainer>
                   <ShowAnchor onClick={showModal}>
