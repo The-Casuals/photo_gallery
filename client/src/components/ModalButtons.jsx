@@ -38,7 +38,8 @@ const Button = styled.button`
   `;
 const ButtonBackground = styled.div`
   content: "" !important;
-  display: block !important;
+  display: flex !important;
+  justify-content: center;
   position: absolute !important;
   top: 50% !important;
   left: 5% !important;
@@ -52,7 +53,8 @@ const ButtonBackground = styled.div`
 `;
 const ButtonBackgroundRight = styled.div`
   content: "" !important;
-  display: block !important;
+  display: flex !important;
+  justify-content: center;
   position: absolute !important;
   top: 50% !important;
   right: 2% !important;
@@ -80,15 +82,13 @@ const ButtonEmojiContainer = styled.span`
 const LeftButtonEmoji = styled(ChevronLeft)`
   display: block;
   height: 50px;
-  width: 12px;
-  stroke: currentcolor;
+  width: 30px;
   overflow: visible;
 `;
 const RightButtonEmoji = styled(ChevronRight)`
   display: block;
   height: 50px;
-  width: 12px;
-  stroke: currentcolor;
+  width: 30px;
   overflow: visible;
 `;
 const ModalButtons = (props) => {
