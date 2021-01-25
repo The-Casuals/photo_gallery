@@ -6,7 +6,7 @@ const controllers = require('./controllers/galleryController.js');
 const app = express();
 const port = 3017;
 
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use('/:id', express.static(path.join(__dirname, '../client/dist')));
 
 app.get('/api/galleries', controllers.getGalleries);
 

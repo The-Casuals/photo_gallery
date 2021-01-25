@@ -3,12 +3,20 @@ import styled from 'styled-components';
 import { Grid } from '@styled-icons/boxicons-solid';
 
 const Container = styled.div`
+  display: flex;
   padding-left: 40px;
   padding-right: 40px;
+  justify-content: center;
+`;
+const Container1 = styled.div`
+  width: 100%
+  max-width: 1128px;
 `;
 const GalleryContainer = styled.div`
   display: flex;
   height: 400px;
+  justify-content: center;
+  max-width: 1128px;
 `;
 const BigContainer = styled.div`
   width: 50%;
@@ -20,6 +28,7 @@ const Row2 = styled.div`
   height: 50%;
   padding-top: 8px;
   box-sizing: border-box;
+  position: relative;
 `;
 const LeftColumn = styled.div`
   flex-direction: column;
@@ -33,12 +42,13 @@ const RightColumn = styled.div`
   padding-left: 8px;
 `;
 const SmallContainer = styled.div`
-height: 100%;
+  height: 100%;
 `;
 const ShowContainer = styled.div`
-  position: fixed;
-  top: 55%;
-  right: 7%;
+  display: flex;
+  position: absolute;
+  top: 70%;
+  right: 15%;
 `;
 const ShowAnchor = styled.button`
   cursor: pointer;
@@ -61,8 +71,8 @@ const ShowAnchor = styled.button`
   color: rgb(34, 34, 34);
 `;
 const ShowTextContainer = styled.div`
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
 `;
 const GridEmoji = styled(Grid)`
   height: 12px;
@@ -79,75 +89,85 @@ const BigImage = styled.img`
   object-fit: cover;
   height: 100%;
   width: 100%;
+  cursor: pointer;
 `;
 const SmallImage = styled.img`
   height: 100%;
   width: 100%;
   object-fit: cover;
+  cursor: pointer;
 `;
 const SmallTopRight = styled.img`
   border-top-right-radius: 20px;
   height: 100%;
   width: 100%;
   object-fit: cover;
+  cursor: pointer;
 `;
 const SmallBottomRight = styled.img`
   border-bottom-right-radius: 20px;
   height: 100%;
   width: 100%;
   object-fit: cover;
+  cursor: pointer;
 `;
 const Gallery = (props) => {
-  const { galleria } = props;
-  const { gallery } = galleria;
+  const { allImages, showModal, onClick } = props;
 
   return (
     <Container>
-      <GalleryContainer>
-        <BigContainer>
-          <BigImage
-            src={gallery[0]['photoUrl']}
-          />
-        </BigContainer>
-        <LeftColumn>
-          <SmallContainer>
-            <Row1>
-              <SmallImage
-                src={gallery[1]['photoUrl']}
-              />
-            </Row1>
-            <Row2>
-              <SmallImage
-                src={gallery[2]['photoUrl']}
-              />
-            </Row2>
-          </SmallContainer>
-        </LeftColumn>
-        <RightColumn>
-          <SmallContainer>
-            <Row1>
-              <SmallTopRight
-                src={gallery[3]['photoUrl']}
-              />
-            </Row1>
-            <Row2>
-              <SmallBottomRight
-                src={gallery[4]['photoUrl']}
-              />
-              <ShowContainer>
-                <ShowAnchor>
-                  <ShowTextContainer>
-                    <GridEmoji />
-                    <ShowText>
-                      Show all photos
-                    </ShowText>
-                  </ShowTextContainer>
-                </ShowAnchor>
-              </ShowContainer>
-            </Row2>
-          </SmallContainer>
-        </RightColumn>
-      </GalleryContainer>
+      <Container1>
+        <GalleryContainer>
+          <BigContainer>
+            <BigImage
+              src={allImages[0].photoUrl}
+              onClick={() => onClick(0)}
+            />
+          </BigContainer>
+          <LeftColumn>
+            <SmallContainer>
+              <Row1>
+                <SmallImage
+                  src={allImages[1].photoUrl}
+                  onClick={() => onClick(1)}
+                />
+              </Row1>
+              <Row2>
+                <SmallImage
+                  src={allImages[2].photoUrl}
+                  onClick={() => onClick(2)}
+                />
+              </Row2>
+            </SmallContainer>
+          </LeftColumn>
+          <RightColumn>
+            <SmallContainer>
+              <Row1>
+                <SmallTopRight
+                  src={allImages[3].photoUrl}
+                  onClick={() => onClick(3)}
+                />
+              </Row1>
+              <Row2>
+                <SmallBottomRight
+                  src={allImages[4].photoUrl}
+                  onClick={() => onClick(4)}
+                />
+                <ShowContainer>
+                  <ShowAnchor onClick={showModal}>
+                    <ShowTextContainer>
+                      <GridEmoji />
+                      <ShowText>
+                        Show all photos
+                      </ShowText>
+                    </ShowTextContainer>
+                  </ShowAnchor>
+                </ShowContainer>
+              </Row2>
+            </SmallContainer>
+          </RightColumn>
+        </GalleryContainer>
+      </Container1>
     </Container>
   );
 };
