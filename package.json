@@ -45,7 +45,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "faker": "^5.1.0",
-    "mongoose": "^4.11.6",
+    "mongoose": "^5.11.11",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "styled-components": "^5.2.1",

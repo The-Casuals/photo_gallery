@@ -10,6 +10,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
+      listingId: this.props.listingId,
       galleria: {},
       show: false,
       picture: { _id: 1 },
@@ -21,8 +22,7 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    const randomId = Math.floor(Math.random() * 100);
-    await this.getGalleryById(randomId);
+    await this.getGalleryById();
 
     this.getGalleryById = this.getGalleryById.bind(this);
     this.showModal = this.showModal.bind(this);
@@ -55,8 +55,8 @@ class App extends React.Component {
     // this.setState({ pictureIndex: pictureIndex + 1, modalImage: allImages[pictureIndex + 1] });
   }
 
-  getGalleryById(id) {
-    axios.get(`http://localhost:3017/api/galleries/${id}`)
+  getGalleryById() {
+    axios.get(`http://localhost:3017/api/galleries/${this.state.listingId}`)
       .then((res) => {
         this.setState({ galleria: res.data[0] }, () => {
           const { galleria, loading } = this.state;
