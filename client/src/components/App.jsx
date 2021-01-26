@@ -74,7 +74,6 @@ class App extends React.Component {
   }
 
   hideModal() {
-    console.log('Hello remy');
     const { allImages } = this.state;
     this.setState({ show: false, modalImage: allImages[0], pictureIndex: 0 });
   }
@@ -99,8 +98,6 @@ class App extends React.Component {
       <div>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet" />
-        {/* <Header galleria={galleria} />
-        <Gallery allImages={allImages} showModal={this.showModal} /> */}
         {loadingRender}
         {renderModal}
       </div>

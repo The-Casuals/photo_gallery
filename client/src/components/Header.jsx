@@ -28,7 +28,6 @@ const TitleRow = styled.div`
   font-family: 'Nunito Sans', sans-serif;
 `;
 const DescriptionRow = styled.div`
-  margin-top: -2%;
   display: flex;
   justify-content: flex-start;
   align-items: baseline;
