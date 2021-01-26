@@ -56,7 +56,7 @@ class App extends React.Component {
   }
 
   getGalleryById() {
-    axios.get(`http://localhost:3017/api/galleries/${this.state.listingId}`)
+    axios.get(`/api/galleries/${this.state.listingId}`)
       .then((res) => {
         this.setState({ galleria: res.data[0] }, () => {
           const { galleria, loading } = this.state;
