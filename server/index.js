@@ -9,7 +9,7 @@ const port = 3017;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use('/:id', express.static(path.join(__dirname, '../client/dist')));
+app.use('/:id', express.static(path.join(__dirname, '../client/dist/bundle.js')));
 
 app.get('/api/galleries', controllers.getGalleries);
 
