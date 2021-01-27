@@ -5,7 +5,7 @@ services:
   build:
    context: .
   ports:
-   - 3017:3017
+   - 80:3017
   environment:
    - CONNECTIONSTRING=mongodb://mongo:27017/photogallery
   volumes:
