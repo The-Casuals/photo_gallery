@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use('/:id', express.static(path.join(__dirname, '../client/dist')));
 
 app.get('/api/galleries', controllers.getGalleries);
-app.use('/bundles', express.static(path.join(__dirname, '../client/dist/bundle.js')));
+app.use('/:id/bundle', express.static(path.join(__dirname, '../client/dist/bundle.js')));
 app.get('/api/galleries/:id', controllers.getGalleryById);
 
 app.listen(port, () => {
