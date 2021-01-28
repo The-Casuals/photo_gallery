@@ -123,6 +123,7 @@ const Gallery = (props) => {
             <BigImage
               src={allImages[0].photoUrl}
               type="image/webp"
+              alt="house image"
               onClick={() => onClick(0)}
             />
           </BigContainer>
@@ -132,6 +133,7 @@ const Gallery = (props) => {
                 <SmallImage
                   src={allImages[1].photoUrl}
                   type="image/webp"
+                  alt="house image"
                   onClick={() => onClick(1)}
                 />
               </Row1>
@@ -139,6 +141,7 @@ const Gallery = (props) => {
                 <SmallImage
                   src={allImages[2].photoUrl}
                   type="image/webp"
+                  alt="house image"
                   onClick={() => onClick(2)}
                 />
               </Row2>
@@ -150,6 +153,7 @@ const Gallery = (props) => {
                 <SmallTopRight
                   src={allImages[3].photoUrl}
                   type="image/webp"
+                  alt="house image"
                   onClick={() => onClick(3)}
                 />
               </Row1>
@@ -157,6 +161,7 @@ const Gallery = (props) => {
                 <SmallBottomRight
                   src={allImages[4].photoUrl}
                   type="image/webp"
+                  alt="house image"
                   onClick={() => onClick(4)}
                 />
                 <ShowContainer>
