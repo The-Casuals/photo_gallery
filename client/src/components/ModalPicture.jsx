@@ -1,6 +1,6 @@
-/* eslint-disable no-nested-ternary */
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Verified } from '@styled-icons/material/Verified';
 
 const Container = styled.div`
@@ -125,6 +125,16 @@ const ModalPicture = (props) => {
       </DescriptionContainer>
     )
     : (<></>);
+  const renderFunc = () => {
+    if (hasDescription && isVerified) {
+      return renderBoth;
+    } if (hasDescription && !isVerified) {
+      return renderDescription;
+    } if (!hasDescription && isVerified) {
+      return renderVerified;
+    }
+    return (<></>);
+  };
   return (
     <Container>
       <ModalContainer>
@@ -134,13 +144,7 @@ const ModalPicture = (props) => {
               <PictureContainer>
                 <Picture src={photoUrl} alt={photoName} />
               </PictureContainer>
-              {hasDescription && isVerified
-                ? renderBoth
-                : hasDescription && !isVerified
-                  ? renderDescription
-                  : !hasDescription && isVerified
-                    ? renderVerified
-                    : (<></>)}
+              {renderFunc()}
             </HeightContainer>
           </ModalContainer2>
         </ModalContainer1>
@@ -149,4 +153,17 @@ const ModalPicture = (props) => {
   );
 };
 
+// {hasDescription && isVerified
+//   ? renderBoth
+//   : hasDescription && !isVerified
+//     ? renderDescription
+//     : !hasDescription && isVerified
+//       ? renderVerified
+//       : (<></>)}
+ModalPicture.propTypes = {
+  modalImage: PropTypes.objectOf(
+    PropTypes.bool,
+    PropTypes.string,
+  ).isRequired,
+};
 export default ModalPicture;

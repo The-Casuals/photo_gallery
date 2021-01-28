@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Item = ({ picture }) => {
   const { photoUrl, photoDescription, photoName } = picture;
@@ -23,4 +22,7 @@ const Item = ({ picture }) => {
   );
 };
 
+Item.propTypes = {
+  picture: PropTypes.objectOf(PropTypes.string).isRequired,
+};
 export default Item;

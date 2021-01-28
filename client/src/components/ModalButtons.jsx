@@ -1,6 +1,7 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import {
   ChevronLeft, ChevronRight,
 } from '@styled-icons/entypo';
@@ -115,4 +116,8 @@ const ModalButtons = (props) => {
   );
 };
 
+ModalButtons.propTypes = {
+  onRightClick: PropTypes.func.isRequired,
+  onLeftClick: PropTypes.func.isRequired,
+};
 export default ModalButtons;
