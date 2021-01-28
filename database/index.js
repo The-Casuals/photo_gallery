@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 // 'mongodb://localhost/photogallery'
-mongoose.connect(process.env.CONNECTIONSTRING, { useNewUrlParser: true, useUnifiedTopology: true });
+let string = process.env.CONNECTIONSTRING;
+
+if (process.env.CONNECTIONSTRING !== 'production') {
+  string = 'mongodb://localhost/photogallery';
+}
+mongoose.connect(string, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const { connection } = mongoose;
 

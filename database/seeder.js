@@ -5,13 +5,13 @@ const seed = [];
 
 const getGalleries = () => {
   const galleries = [];
-  const randomAlbum = Math.floor(Math.random() * (2 - 0) + 0);
+  const randomAlbum = Math.floor(Math.random() * (3 - 0) + 0);
   const lengths = [52, 16, 42];
   for (let i = 0; i < lengths[randomAlbum]; i += 1) {
     galleries.push({
       _id: i + 1,
       photoName: faker.random.words(),
-      photoUrl: `https://fec-photogallery-storage.s3-us-west-1.amazonaws.com/${randomAlbum + 1}/${i}.jpeg`,
+      photoUrl: `https://fec-photogallery-storage.s3-us-west-1.amazonaws.com/${randomAlbum + 1}/${i}.webp`,
       photoDescription: faker.lorem.paragraph(),
       isVerified: faker.random.boolean(),
       hasDescription: faker.random.boolean(),
