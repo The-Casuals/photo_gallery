@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import {
-  HeartOutlined, Heart, Star, Trophy, ShareAlternative,
+  HeartOutlined, Star, Trophy, ShareAlternative,
 } from '@styled-icons/entypo';
 
 const Container = styled.div`
@@ -151,4 +150,17 @@ const Header = (props) => {
   );
 };
 
+Header.propTypes = {
+  galleria: PropTypes.shape({
+    reviews: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    location: PropTypes.shape({
+      city: PropTypes.string.isRequired,
+      state: PropTypes.string.isRequired,
+      country: PropTypes.string.isRequired,
+    }).isRequired,
+    title: PropTypes.string.isRequired,
+    isSuperhost: PropTypes.bool.isRequired,
+  }).isRequired,
+};
 export default Header;

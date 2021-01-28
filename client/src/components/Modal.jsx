@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import ModalHeader from './ModalHeader';
 import ModalButtons from './ModalButtons';
 import ModalPicture from './ModalPicture';
@@ -29,7 +30,8 @@ const SubContainer2 = styled.div`
 `;
 const Modal = (props) => {
   const {
-    featurePicture, hideModal, onModalClick, onLeftClick, onRightClick, allImages, pictureIndex, modalImage,
+    hideModal, onModalClick, onLeftClick, onRightClick,
+    allImages, pictureIndex, modalImage,
   } = props;
   return (
     <MainContainer>
@@ -38,7 +40,12 @@ const Modal = (props) => {
           <SubContainer2>
             <ModalHeader hideModal={hideModal} modalImage={modalImage} allImages={allImages} />
             <ModalButtons onLeftClick={onLeftClick} onRightClick={onRightClick} />
-            <ModalPicture featurePicture={allImages[0]} modalImage={modalImage} onModalClick={onModalClick} index={pictureIndex}/>
+            <ModalPicture
+              featurePicture={allImages[0]}
+              modalImage={modalImage}
+              onModalClick={onModalClick}
+              index={pictureIndex}
+            />
           </SubContainer2>
         </SubContainer1>
       </SubContainer>
@@ -46,4 +53,19 @@ const Modal = (props) => {
   );
 };
 
+Modal.propTypes = {
+  hideModal: PropTypes.func.isRequired,
+  onModalClick: PropTypes.func.isRequired,
+  onLeftClick: PropTypes.func.isRequired,
+  onRightClick: PropTypes.func.isRequired,
+  allImages: PropTypes.arrayOf(PropTypes.objectOf(
+    PropTypes.string,
+    PropTypes.bool,
+  )).isRequired,
+  pictureIndex: PropTypes.number.isRequired,
+  modalImage: PropTypes.objectOf(
+    PropTypes.string,
+    PropTypes.bool,
+  ).isRequired,
+};
 export default Modal;

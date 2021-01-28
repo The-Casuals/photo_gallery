@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import {
   HeartOutlined, Heart, ShareAlternative,
 } from '@styled-icons/entypo';
@@ -173,4 +174,15 @@ const ModalHeader = (props) => {
   );
 };
 
+ModalHeader.propTypes = {
+  hideModal: PropTypes.func.isRequired,
+  allImages: PropTypes.arrayOf(PropTypes.objectOf(
+    PropTypes.string,
+    PropTypes.bool,
+  )).isRequired,
+  modalImage: PropTypes.objectOf(
+    PropTypes.string,
+    PropTypes.bool,
+  ).isRequired,
+};
 export default ModalHeader;

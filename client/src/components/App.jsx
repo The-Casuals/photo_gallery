@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 // import List from './List';
 import Header from './Header';
 import Gallery from './Gallery';
@@ -8,9 +9,9 @@ import Modal from './Modal';
 class App extends React.Component {
   constructor(props) {
     super(props);
-
+    const { listingId } = this.props;
     this.state = {
-      listingId: this.props.listingId,
+      listingId,
       galleria: {},
       show: false,
       picture: { _id: 1 },
@@ -39,15 +40,15 @@ class App extends React.Component {
   }
 
   handleLeftButtonClick() {
-    console.log('left fired');
     const { pictureIndex, allImages } = this.state;
     return pictureIndex === 0
-      ? this.setState({ pictureIndex: allImages.length - 1, modalImage: allImages[allImages.length -1] })
+      ? this.setState({
+        pictureIndex: allImages.length - 1, modalImage: allImages[allImages.length - 1],
+      })
       : this.setState({ pictureIndex: pictureIndex - 1, modalImage: allImages[pictureIndex - 1] });
   }
 
   handleRightButtonClick() {
-    console.log('right fired');
     const { pictureIndex, allImages } = this.state;
     return pictureIndex === allImages.length - 1
       ? this.setState({ pictureIndex: 0, modalImage: allImages[0] })
@@ -56,7 +57,8 @@ class App extends React.Component {
   }
 
   getGalleryById() {
-    axios.get(`/api/galleries/${this.state.listingId}`)
+    const { listingId } = this.state;
+    axios.get(`/api/galleries/${listingId}`)
       .then((res) => {
         this.setState({ galleria: res.data[0] }, () => {
           const { galleria, loading } = this.state;
@@ -83,15 +85,29 @@ class App extends React.Component {
       galleria, show, picture, allImages, loading, pictureIndex, modalImage,
     } = this.state;
     const renderModal = show
-      // eslint-disable-next-line max-len
-      ? <Modal featurePicture={picture} show={show} hideModal={this.hideModal} onLeftClick={this.handleLeftButtonClick} onRightClick={this.handleRightButtonClick} allImages={allImages} pictureIndex={pictureIndex} modalImage={modalImage} />
+
+      ? (
+        <Modal
+          show={show}
+          hideModal={this.hideModal}
+          onLeftClick={this.handleLeftButtonClick}
+          onRightClick={this.handleRightButtonClick}
+          allImages={allImages}
+          pictureIndex={pictureIndex}
+          modalImage={modalImage}
+        />
+      )
       : (<></>);
     const loadingRender = loading
       ? (<div>Loading....</div>)
       : (
         <div>
           <Header galleria={galleria} featuredPicture={picture} />
-          <Gallery allImages={allImages} showModal={this.showModal} onClick={this.handleModalClick} />
+          <Gallery
+            allImages={allImages}
+            showModal={this.showModal}
+            onClick={this.handleModalClick}
+          />
         </div>
       );
     return (
@@ -105,4 +121,7 @@ class App extends React.Component {
   }
 }
 
+App.propTypes = {
+  listingId: PropTypes.number.isRequired,
+};
 export default App;

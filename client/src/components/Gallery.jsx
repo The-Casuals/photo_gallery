@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Grid } from '@styled-icons/boxicons-solid';
 
 const Container = styled.div`
@@ -121,6 +122,7 @@ const Gallery = (props) => {
           <BigContainer>
             <BigImage
               src={allImages[0].photoUrl}
+              type="image/webp"
               onClick={() => onClick(0)}
             />
           </BigContainer>
@@ -129,12 +131,14 @@ const Gallery = (props) => {
               <Row1>
                 <SmallImage
                   src={allImages[1].photoUrl}
+                  type="image/webp"
                   onClick={() => onClick(1)}
                 />
               </Row1>
               <Row2>
                 <SmallImage
                   src={allImages[2].photoUrl}
+                  type="image/webp"
                   onClick={() => onClick(2)}
                 />
               </Row2>
@@ -145,12 +149,14 @@ const Gallery = (props) => {
               <Row1>
                 <SmallTopRight
                   src={allImages[3].photoUrl}
+                  type="image/webp"
                   onClick={() => onClick(3)}
                 />
               </Row1>
               <Row2>
                 <SmallBottomRight
                   src={allImages[4].photoUrl}
+                  type="image/webp"
                   onClick={() => onClick(4)}
                 />
                 <ShowContainer>
@@ -172,4 +178,9 @@ const Gallery = (props) => {
   );
 };
 
+Gallery.propTypes = {
+  allImages: PropTypes.arrayOf(PropTypes.object).isRequired,
+  showModal: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 export default Gallery;
