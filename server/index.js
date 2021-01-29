@@ -11,11 +11,9 @@ app.use(bodyParser.json());
 
 app.use('/:id', express.static(path.join(__dirname, '../client/dist')));
 
-app.get('/api/galleries', controllers.getGalleries);
 app.use('/:id/bundle', express.static(path.join(__dirname, '../client/dist/bundle.js')));
 app.get('/api/galleries/:id', controllers.getGalleryById);
 
-module.exports = {
-  app,
-  port,
-};
+app.listen(port, () => {
+  console.log(`Photo Gallery app listening at http://localhost:${port}`);
+});
