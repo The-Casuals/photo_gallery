@@ -64,6 +64,7 @@ Modal.propTypes = {
   )).isRequired,
   pictureIndex: PropTypes.number.isRequired,
   modalImage: PropTypes.objectOf(
+    PropTypes.number,
     PropTypes.string,
     PropTypes.bool,
   ).isRequired,

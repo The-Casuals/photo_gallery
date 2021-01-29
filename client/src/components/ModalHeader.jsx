@@ -176,13 +176,9 @@ const ModalHeader = (props) => {
 
 ModalHeader.propTypes = {
   hideModal: PropTypes.func.isRequired,
-  allImages: PropTypes.arrayOf(PropTypes.objectOf(
-    PropTypes.string,
-    PropTypes.bool,
-  )).isRequired,
-  modalImage: PropTypes.objectOf(
-    PropTypes.string,
-    PropTypes.bool,
-  ).isRequired,
+  allImages: PropTypes.arrayOf(PropTypes.object).isRequired,
+  modalImage: PropTypes.shape({
+    _id: PropTypes.number.isRequired,
+  }).isRequired,
 };
 export default ModalHeader;
