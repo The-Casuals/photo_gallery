@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// eslint-disable-next-line import/extensions
-import App from './components/App.jsx';
+import App from './components/App';
 
 const listingId = Number(window.location.pathname.match(/\/(\d+)\//)[1]);
 

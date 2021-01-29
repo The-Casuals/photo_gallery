@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-// import List from './List';
 import Header from './Header';
 import Gallery from './Gallery';
 import Modal from './Modal';
@@ -53,7 +52,6 @@ class App extends React.Component {
     return pictureIndex === allImages.length - 1
       ? this.setState({ pictureIndex: 0, modalImage: allImages[0] })
       : this.setState({ pictureIndex: pictureIndex + 1, modalImage: allImages[pictureIndex + 1] });
-    // this.setState({ pictureIndex: pictureIndex + 1, modalImage: allImages[pictureIndex + 1] });
   }
 
   getGalleryById() {

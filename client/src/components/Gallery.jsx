@@ -125,6 +125,8 @@ const Gallery = (props) => {
               type="image/webp"
               alt="house image"
               onClick={() => onClick(0)}
+              height="400px"
+              width="556px"
             />
           </BigContainer>
           <LeftColumn>
@@ -135,6 +137,8 @@ const Gallery = (props) => {
                   type="image/webp"
                   alt="house image"
                   onClick={() => onClick(1)}
+                  width="278px"
+                  height="200px"
                 />
               </Row1>
               <Row2>
@@ -143,6 +147,8 @@ const Gallery = (props) => {
                   type="image/webp"
                   alt="house image"
                   onClick={() => onClick(2)}
+                  width="278px"
+                  height="192px"
                 />
               </Row2>
             </SmallContainer>
@@ -155,6 +161,8 @@ const Gallery = (props) => {
                   type="image/webp"
                   alt="house image"
                   onClick={() => onClick(3)}
+                  width="278px"
+                  height="200px"
                 />
               </Row1>
               <Row2>
@@ -163,6 +171,8 @@ const Gallery = (props) => {
                   type="image/webp"
                   alt="house image"
                   onClick={() => onClick(4)}
+                  width="278px"
+                  height="192px"
                 />
                 <ShowContainer>
                   <ShowAnchor onClick={showModal}>

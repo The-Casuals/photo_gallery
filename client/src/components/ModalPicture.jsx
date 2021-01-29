@@ -142,7 +142,13 @@ const ModalPicture = (props) => {
           <ModalContainer2>
             <HeightContainer>
               <PictureContainer>
-                <Picture src={photoUrl} alt={photoName} />
+                <Picture
+                  src={photoUrl}
+                  alt={photoName}
+                  type="image/webp"
+                  width="832px"
+                  height="auto"
+                />
               </PictureContainer>
               {renderFunc()}
             </HeightContainer>
@@ -153,13 +159,6 @@ const ModalPicture = (props) => {
   );
 };
 
-// {hasDescription && isVerified
-//   ? renderBoth
-//   : hasDescription && !isVerified
-//     ? renderDescription
-//     : !hasDescription && isVerified
-//       ? renderVerified
-//       : (<></>)}
 ModalPicture.propTypes = {
   modalImage: PropTypes.objectOf(
     PropTypes.bool,
