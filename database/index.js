@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-// 'mongodb://localhost/photogallery'
+
 const string = process.env.CONNECTIONSTRING;
 const otherstring = 'mongodb://localhost/photogallery';
 

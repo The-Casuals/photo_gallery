@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {
-  HeartOutlined, Heart, ShareAlternative,
+  HeartOutlined, ShareAlternative,
 } from '@styled-icons/entypo';
 
 const HeaderContainer = styled
