@@ -6,7 +6,6 @@ module.exports = {
   plugins: [
     [
       '@babel/transform-runtime',
-      'babel-plugin-styled-components',
     ],
   ],
 };
