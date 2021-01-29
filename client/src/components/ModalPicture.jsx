@@ -146,8 +146,8 @@ const ModalPicture = (props) => {
                   src={photoUrl}
                   alt={photoName}
                   type="image/webp"
-                  width="832px"
-                  height="auto"
+                  width="832.5px"
+                  height="806.94px"
                 />
               </PictureContainer>
               {renderFunc()}
