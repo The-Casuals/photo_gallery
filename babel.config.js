@@ -1,11 +1,14 @@
 module.exports = {
+  plugins: ['babel-plugin-styled-components'],
   presets: [
-    '@babel/preset-env',
-    '@babel/preset-react',
-  ],
-  plugins: [
     [
-      '@babel/transform-runtime',
+      '@babel/preset-env',
+      {
+        targets: {
+          node: 'current',
+        },
+      },
     ],
+    '@babel/preset-react',
   ],
 };
