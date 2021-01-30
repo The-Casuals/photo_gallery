@@ -6,7 +6,7 @@ const seed = [];
 const getGalleries = () => {
   const galleries = [];
   const randomAlbum = Math.floor(Math.random() * (3 - 0) + 0);
-  const lengths = [52, 16, 42];
+  const lengths = [51, 15, 41];
   for (let i = 0; i < lengths[randomAlbum]; i += 1) {
     galleries.push({
       _id: i + 1,
