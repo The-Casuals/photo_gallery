@@ -70,6 +70,8 @@ const ShowAnchor = styled.button`
   border-color: rgb(34, 34, 34);
   background: rgb(255, 255, 255);
   color: rgb(34, 34, 34);
+  touch-action: manipulation !important;
+  transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s !important;
 `;
 const ShowTextContainer = styled.div`
   display: flex;
