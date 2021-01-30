@@ -160,9 +160,13 @@ const ModalPicture = (props) => {
 };
 
 ModalPicture.propTypes = {
-  modalImage: PropTypes.objectOf(
-    PropTypes.bool,
-    PropTypes.string,
-  ).isRequired,
+  modalImage: PropTypes.shape({
+    _id: PropTypes.number.isRequired,
+    hasDescription: PropTypes.bool.isRequired,
+    isVerified: PropTypes.bool.isRequired,
+    photoDescription: PropTypes.string.isRequired,
+    photoName: PropTypes.string.isRequired,
+    photoUrl: PropTypes.string.isRequired,
+  }).isRequired,
 };
 export default ModalPicture;

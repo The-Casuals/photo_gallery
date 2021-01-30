@@ -23,7 +23,7 @@ const Header = styled.div`
 `;
 const HeaderLine = styled.div`
   color: rgb(34, 34, 34) !important;
-  font-family: 'Nunito Sans', sans-serif !important;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-weight: 400 !important;
   font-size: 16px !important;
   line-height: 20px !important;
@@ -45,7 +45,7 @@ const HideButton = styled.button`
   text-decoration: none !important;
   width: auto !important;
   touch-action: manipulation !important;
-  font-family: 'Nunito Sans', sans-serif !important;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-size: 14px !important;
   line-height: 18px !important;
   font-weight: 600 !important;border-radius: 8px !important;outline: none !important;
@@ -84,7 +84,7 @@ const HeaderEnd = styled.div`
   display: flex !important;
   flex: 0 0 auto !important;
   color: rgb(34, 34, 34) !important;
-  font-family: 'Nunito Sans', sans-serif !important;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-weight: 400 !important;
   font-size: 16px !important;
   line-height: 20px !important;

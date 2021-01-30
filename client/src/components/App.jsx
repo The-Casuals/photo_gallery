@@ -23,7 +23,6 @@ class App extends React.Component {
 
   async componentDidMount() {
     await this.getGalleryById();
-
     this.getGalleryById = this.getGalleryById.bind(this);
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);

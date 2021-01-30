@@ -24,7 +24,7 @@ const TitleRow = styled.div`
   display: flex;
   width: 100%;
   max-width: 1128px;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 `;
 const DescriptionRow = styled.div`
   display: flex;
@@ -36,7 +36,7 @@ const HeaderDescrip = styled.div`
   justify-content: flex-start;
   align-items: start;
   flex: 1;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-size: 14px;
 `;
 const HeaderEnd = styled.div`
@@ -102,7 +102,7 @@ const Button = styled.button`
   cursor: pointer;
   padding: 8px;
   font-weight: bold;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-size: 14px;
 `;
 const Header = (props) => {
