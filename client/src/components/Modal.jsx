@@ -7,6 +7,8 @@ import ModalPicture from './ModalPicture';
 
 const MainContainer = styled.div`
   box-sizing: border-box;
+  top: -50%;
+  transition: all .5s ease-in-out;
 `;
 const SubContainer = styled.div`
   color: rgb(34, 34, 34) !important;
@@ -31,14 +33,20 @@ const SubContainer2 = styled.div`
 const Modal = (props) => {
   const {
     hideModal, onLeftClick, onRightClick,
-    allImages, pictureIndex, modalImage,
+    allImages, pictureIndex, modalImage, isSaved, onSaveClick,
   } = props;
   return (
     <MainContainer>
       <SubContainer>
         <SubContainer1>
           <SubContainer2>
-            <ModalHeader hideModal={hideModal} modalImage={modalImage} allImages={allImages} />
+            <ModalHeader
+              hideModal={hideModal}
+              modalImage={modalImage}
+              allImages={allImages}
+              isSaved={isSaved}
+              onSaveClick={onSaveClick}
+            />
             <ModalButtons onLeftClick={onLeftClick} onRightClick={onRightClick} />
             <ModalPicture
               featurePicture={allImages[0]}
@@ -53,6 +61,8 @@ const Modal = (props) => {
 };
 
 Modal.propTypes = {
+  isSaved: PropTypes.bool.isRequired,
+  onSaveClick: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
   onLeftClick: PropTypes.func.isRequired,
   onRightClick: PropTypes.func.isRequired,

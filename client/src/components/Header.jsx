@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {
-  HeartOutlined, Star, Trophy, ShareAlternative,
+  HeartOutlined, Heart, Star, Trophy, ShareAlternative,
 } from '@styled-icons/entypo';
 
 const Container = styled.div`
@@ -91,6 +91,13 @@ const SaveEmoji = styled(HeartOutlined)`
   height: 15px;
   width: 15px;
 `;
+const ClickedSaveEmoji = styled(Heart)`
+  margin-right: 4px;
+  vertical-align: text-top;
+  height: 15px;
+  width: 15px;
+  color: red;
+`;
 const Button = styled.button`
   appearance: none;
   outline: none;
@@ -106,7 +113,7 @@ const Button = styled.button`
   font-size: 14px;
 `;
 const Header = (props) => {
-  const { galleria } = props;
+  const { galleria, onClick, isSaved } = props;
   const {
     title, reviews, rating, isSuperhost, location,
   } = galleria;
@@ -135,8 +142,10 @@ const Header = (props) => {
             <Location href={`https://www.google.com/search?q=${city}+${state}+${country}`}>{`${city}, ${state}, ${country}`}</Location>
           </HeaderDescrip>
           <HeaderEnd>
-            <Button>
-              <SaveEmoji />
+            <Button onClick={() => onClick()}>
+              {isSaved
+                ? <ClickedSaveEmoji />
+                : <SaveEmoji />}
               Save
             </Button>
             <Button>
@@ -151,6 +160,8 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  isSaved: PropTypes.bool.isRequired,
   galleria: PropTypes.shape({
     reviews: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,

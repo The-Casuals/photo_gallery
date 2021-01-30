@@ -18,6 +18,7 @@ class App extends React.Component {
       allImages: [],
       modalImage: null,
       loading: true,
+      isSaved: false,
     };
   }
 
@@ -29,6 +30,12 @@ class App extends React.Component {
     this.handleModalClick = this.handleModalClick.bind(this);
     this.handleLeftButtonClick = this.handleLeftButtonClick.bind(this);
     this.handleRightButtonClick = this.handleRightButtonClick.bind(this);
+    this.handleSaveClick = this.handleSaveClick.bind(this);
+  }
+
+  handleSaveClick() {
+    const { isSaved } = this.state;
+    this.setState({ isSaved: !isSaved });
   }
 
   handleModalClick(photoId) {
@@ -79,10 +86,10 @@ class App extends React.Component {
 
   render() {
     const {
-      galleria, show, picture, allImages, loading, pictureIndex, modalImage,
+      galleria, show, picture, allImages, loading, pictureIndex, modalImage, isSaved,
     } = this.state;
     const renderModal = show
-
+    // 1127 width
       ? (
         <Modal
           show={show}
@@ -92,6 +99,8 @@ class App extends React.Component {
           allImages={allImages}
           pictureIndex={pictureIndex}
           modalImage={modalImage}
+          isSaved={isSaved}
+          onSaveClick={this.handleSaveClick}
         />
       )
       : (<></>);
@@ -99,7 +108,12 @@ class App extends React.Component {
       ? (<div>Loading....</div>)
       : (
         <div>
-          <Header galleria={galleria} featuredPicture={picture} />
+          <Header
+            galleria={galleria}
+            featuredPicture={picture}
+            onClick={this.handleSaveClick}
+            isSaved={isSaved}
+          />
           <Gallery
             allImages={allImages}
             showModal={this.showModal}

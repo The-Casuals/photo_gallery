@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {
-  HeartOutlined, ShareAlternative,
+  HeartOutlined, Heart, ShareAlternative,
 } from '@styled-icons/entypo';
 
 const HeaderContainer = styled
@@ -91,6 +91,7 @@ const HeaderEnd = styled.div`
   justify-content: flex-end !important;
 `;
 const ShareSaveContainer = styled.div`
+  position: absolute;
   display: flex !important;
   justify-content: flex-end !important;
   padding-top: 6px !important;
@@ -101,9 +102,9 @@ const ShareEmojiContainer = styled.div`
   margin-right: 20px;
 `;
 const ShareEmoji = styled(ShareAlternative)`
-  appearance: none !important;
+  width: 15px;
+  position: relative;
   display: inline-block !important;
-  border-radius: 50% !important;
   border: none !important;
   outline: none !important;
   margin: 0px !important;
@@ -116,9 +117,9 @@ const ShareEmoji = styled(ShareAlternative)`
   transition: -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s !important;
 `;
 const SaveEmoji = styled(HeartOutlined)`
-  appearance: none !important;
+  width: 20px;
+  position: relative;
   display: inline-block !important;
-  border-radius: 50% !important;
   border: none !important;
   outline: none !important;
   margin: 0px !important;
@@ -130,9 +131,24 @@ const SaveEmoji = styled(HeartOutlined)`
   background: transparent !important;
   transition: -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s !important;
 `;
+const SavedEmoji = styled(Heart)`
+  width: 20px;
+  position: relative;
+  display: inline-block !important;
+  border: none !important;
+  outline: none !important;
+  margin: 0px !important;
+  padding: 0px !important;
+  color: red;
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+  position: relative !important;
+  background: transparent !important;
+  transition: -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s !important;
+`;
 const ModalHeader = (props) => {
   const {
-    hideModal, allImages, modalImage,
+    hideModal, allImages, modalImage, isSaved, onSaveClick,
   } = props;
   const { _id } = modalImage;
   return (
@@ -163,10 +179,10 @@ const ModalHeader = (props) => {
               <ShareEmoji>
                 Share
               </ShareEmoji>
-              <SaveEmoji>
-                Save
-              </SaveEmoji>
             </ShareEmojiContainer>
+            {isSaved
+              ? <SavedEmoji onClick={() => onSaveClick()} />
+              : <SaveEmoji onClick={() => onSaveClick()} />}
           </ShareSaveContainer>
         </HeaderEnd>
       </Header>
@@ -175,6 +191,8 @@ const ModalHeader = (props) => {
 };
 
 ModalHeader.propTypes = {
+  isSaved: PropTypes.bool.isRequired,
+  onSaveClick: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
   allImages: PropTypes.arrayOf(PropTypes.object).isRequired,
   modalImage: PropTypes.shape({
