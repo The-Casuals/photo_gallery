@@ -177,7 +177,7 @@ const Gallery = (props) => {
                   width="192px"
                 />
                 <ShowContainer>
-                  <ShowAnchor onClick={showModal}>
+                  <ShowAnchor onClick={() => showModal()}>
                     <ShowTextContainer>
                       <GridEmoji />
                       <ShowText>

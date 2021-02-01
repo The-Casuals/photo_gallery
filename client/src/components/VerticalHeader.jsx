@@ -7,7 +7,7 @@ import {
 
 const HeaderContainer = styled.div`
   box-sizing: border-box;
-
+  padding-bottom: 24px;
 `;
 const Header = styled.div`
   -webkit-box-pack: justify !important;
@@ -21,18 +21,7 @@ const Header = styled.div`
   z-index: 1 !important;
   transition: border 0.2s ease 0s, opacity 0.2s ease 0.2s !important;
 `;
-const HeaderLine = styled.div`
-  color: rgb(34, 34, 34) !important;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-  font-weight: 400 !important;
-  font-size: 16px !important;
-  line-height: 20px !important;
-  align-items: center !important;
-  inset: 0px !important;
-  display: flex !important;
-  justify-content: center !important;
-  position: absolute !important;
-`;
+
 const HideContainer = styled.div`
   box-sizing: border-box;
 `;
@@ -146,11 +135,10 @@ const SavedEmoji = styled(Heart)`
   background: transparent !important;
   transition: -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s !important;
 `;
-const ModalHeader = (props) => {
+const VerticalHeader = (props) => {
   const {
-    hideModal, allImages, modalImage, isSaved, onSaveClick,
+    hideModal, isSaved, onSaveClick,
   } = props;
-  const { _id } = modalImage;
   return (
     <HeaderContainer>
       <Header>
@@ -170,9 +158,6 @@ const ModalHeader = (props) => {
             </HideButton>
           </HideWrapper>
         </HideContainer>
-        <HeaderLine>
-          {`${_id}/${allImages.length}`}
-        </HeaderLine>
         <HeaderEnd>
           <ShareSaveContainer>
             <ShareEmojiContainer>
@@ -190,13 +175,9 @@ const ModalHeader = (props) => {
   );
 };
 
-ModalHeader.propTypes = {
+VerticalHeader.propTypes = {
   isSaved: PropTypes.bool.isRequired,
   onSaveClick: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
-  allImages: PropTypes.arrayOf(PropTypes.object).isRequired,
-  modalImage: PropTypes.shape({
-    _id: PropTypes.number.isRequired,
-  }).isRequired,
 };
-export default ModalHeader;
+export default VerticalHeader;

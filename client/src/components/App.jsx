@@ -13,12 +13,14 @@ class App extends React.Component {
       listingId,
       galleria: {},
       show: false,
+      verticalShow: false,
       picture: { _id: 1 },
       pictureIndex: 0,
       allImages: [],
       modalImage: null,
       loading: true,
       isSaved: false,
+      viewPort: null,
     };
   }
 
@@ -31,6 +33,13 @@ class App extends React.Component {
     this.handleLeftButtonClick = this.handleLeftButtonClick.bind(this);
     this.handleRightButtonClick = this.handleRightButtonClick.bind(this);
     this.handleSaveClick = this.handleSaveClick.bind(this);
+    this.handleViewPort = this.handleViewPort.bind(this);
+    await window.addEventListener('resize', this.handleViewPort);
+    this.handleViewPort();
+  }
+
+  handleViewPort() {
+    this.setState({ viewPort: window.innerWidth });
   }
 
   handleSaveClick() {
@@ -40,8 +49,9 @@ class App extends React.Component {
 
   handleModalClick(photoId) {
     const { allImages } = this.state;
-    this.setState({ pictureIndex: photoId, modalImage: allImages[photoId] });
-    this.showModal();
+    this.setState({
+      pictureIndex: photoId, modalImage: allImages[photoId], show: true, verticalShow: false,
+    });
   }
 
   handleLeftButtonClick() {
@@ -76,20 +86,36 @@ class App extends React.Component {
   }
 
   showModal() {
-    this.setState({ show: true });
+    const { viewPort, show } = this.state;
+    if ((viewPort > 1127) || show) {
+      this.setState({ show: true, verticalShow: false });
+    } else if (viewPort < 1128 && show) {
+      this.setState({ show: true, verticalShow: false });
+    } else {
+      this.showVerticalModal();
+    }
+  }
+
+  showVerticalModal() {
+    const { viewPort } = this.state;
+    if (viewPort < 1128) {
+      this.setState({ show: false, verticalShow: true });
+    }
   }
 
   hideModal() {
     const { allImages } = this.state;
-    this.setState({ show: false, modalImage: allImages[0], pictureIndex: 0 });
+    this.setState({
+      show: false, verticalShow: false, modalImage: allImages[0], pictureIndex: 0,
+    });
   }
 
   render() {
     const {
-      galleria, show, picture, allImages, loading, pictureIndex, modalImage, isSaved,
+      galleria, show, picture, allImages, loading, pictureIndex,
+      modalImage, isSaved, viewPort, verticalShow,
     } = this.state;
-    const renderModal = show
-    // 1127 width
+    const renderModal = (show || verticalShow)
       ? (
         <Modal
           show={show}
@@ -101,6 +127,9 @@ class App extends React.Component {
           modalImage={modalImage}
           isSaved={isSaved}
           onSaveClick={this.handleSaveClick}
+          viewPort={viewPort}
+          onClick={this.handleModalClick}
+          verticalShow={verticalShow}
         />
       )
       : (<></>);
@@ -123,7 +152,6 @@ class App extends React.Component {
       );
     return (
       <div>
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
         {loadingRender}
         {renderModal}
       </div>
