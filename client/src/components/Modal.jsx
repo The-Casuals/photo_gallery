@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 import ModalHeader from './ModalHeader';
 import ModalButtons from './ModalButtons';
 import ModalPicture from './ModalPicture';
+import VerticalModal from './VerticalModal';
+import VerticalHeader from './VerticalHeader';
 
 const MainContainer = styled.div`
   box-sizing: border-box;
-  top: -50%;
   transition: all .5s ease-in-out;
 `;
 const SubContainer = styled.div`
@@ -29,30 +30,50 @@ const SubContainer2 = styled.div`
   flex-direction: column !important;
   height: 100% !important;
   width: 100% !important;
+  overflow: hidden auto;
+`;
+const VerticalContainer = styled.div`
+  flex: 1 1 auto !important;
 `;
 const Modal = (props) => {
   const {
     hideModal, onLeftClick, onRightClick,
-    allImages, pictureIndex, modalImage, isSaved, onSaveClick,
+    allImages, pictureIndex, modalImage, isSaved,
+    onSaveClick, viewPort, verticalShow, onClick,
   } = props;
+
+  const renderModals = ((viewPort < 1128) && verticalShow)
+    ? (
+      <div>
+        <VerticalHeader hideModal={hideModal} isSaved={isSaved} onSaveClick={onSaveClick} />
+        <VerticalContainer>
+          <VerticalModal allImages={allImages} onClick={onClick} />
+        </VerticalContainer>
+      </div>
+    )
+    : (
+      <div>
+        <ModalHeader
+          hideModal={hideModal}
+          modalImage={modalImage}
+          allImages={allImages}
+          isSaved={isSaved}
+          onSaveClick={onSaveClick}
+        />
+        <ModalButtons onLeftClick={onLeftClick} onRightClick={onRightClick} />
+        <ModalPicture
+          featurePicture={allImages[0]}
+          modalImage={modalImage}
+          index={pictureIndex}
+        />
+      </div>
+    );
   return (
     <MainContainer>
       <SubContainer>
         <SubContainer1>
           <SubContainer2>
-            <ModalHeader
-              hideModal={hideModal}
-              modalImage={modalImage}
-              allImages={allImages}
-              isSaved={isSaved}
-              onSaveClick={onSaveClick}
-            />
-            <ModalButtons onLeftClick={onLeftClick} onRightClick={onRightClick} />
-            <ModalPicture
-              featurePicture={allImages[0]}
-              modalImage={modalImage}
-              index={pictureIndex}
-            />
+            {renderModals}
           </SubContainer2>
         </SubContainer1>
       </SubContainer>
@@ -61,6 +82,9 @@ const Modal = (props) => {
 };
 
 Modal.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  verticalShow: PropTypes.bool.isRequired,
+  viewPort: PropTypes.number.isRequired,
   isSaved: PropTypes.bool.isRequired,
   onSaveClick: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
